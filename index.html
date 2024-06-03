@@ -158,24 +158,32 @@
             <form id="grandForm">
                 <input type="date" id="grandDate" name="date" required>
                 <div class="form-row">
-                    <label for="grandBotanyMarks">Botany</label>
-                    <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
-                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarksSelect" value="180" readonly>
+                    <select required readonly>
+                        <option value="botany">Physics</option>
+                    </select>
+                    <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
+                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarksSelect" value="180" readonly>
                 </div>
                 <div class="form-row">
-                    <label for="grandZoologyMarks">Zoology</label>
-                    <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
-                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarksSelect" value="180" readonly>
-                </div>
-                <div class="form-row">
-                    <label for="grandChemistryMarks">Chemistry</label>
+                    <select required readonly>
+                        <option value="botany">Chemistry</option>
+                    </select>
                     <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
                     <input type="number" id="grandChemistryMarksSelect" name="chemistryMarksSelect" value="180" readonly>
                 </div>
                 <div class="form-row">
-                    <label for="grandPhysicsMarks">Physics</label>
-                    <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
-                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarksSelect" value="180" readonly>
+                    <select required readonly>
+                        <option value="botany">Botany</option>
+                    </select>
+                    <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
+                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarksSelect" value="180" readonly>
+                </div>
+                <div class="form-row">
+                    <select required readonly>
+                        <option value="botany">Zoology</option>
+                    </select>
+                    <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
+                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarksSelect" value="180" readonly>
                 </div>
                 <label for="grandFirstMark">First Mark</label>
                 <input type="number" id="grandFirstMark" name="firstPhysicsMark" required>
