@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Selection</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #142038;
+        }
+
+        .button-container, .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .button-container h2, .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .button-container button, .form-container button {
+            width: 100%;
+            background-color: #142038;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover, .form-container button:hover {
+            background-color: #1D4FAE;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container input[type="date"], .form-container select, .form-container input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="button-container" id="button-container">
+            <button id="weekendButton">Weekend Test</button>
+            <button id="cumulativeButton">Cumulative Test</button>
+            <button id="grandTestButton">Grand Test</button>
+        </div>
+
+        <div class="form-container" id="weekendFormContainer">
+            <h2>Weekend Test</h2>
+            <form id="weekendForm">
+                <input type="date" id="weekendDate" name="date" required>
+                <select id="weekendSubject" name="subject" required>
+                    <option value="botany">Botany</option>
+                    <option value="zoology">Zoology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                </select>
+                <input type="number" id="weekendMarks" name="marks" required>
+
+                <button type="button" id="addWeekendButton">Add</button>
+                <button type="button" id="backFromWeekendButton">Back</button>
+            </form>
+        </div>
+
+        <div class="form-container" id="cumulativeFormContainer">
+            <h2>Cumulative Test</h2>
+            <form id="cumulativeForm">
+                <input type="date" id="cumulativeDate" name="date" required>
+                <select id="cumulativeSubject1" name="subject1" required>
+                    <option value="botany">Botany</option>
+                    <option value="zoology">Zoology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                </select>
+                <input type="number" id="cumulativeMarks1" name="marks1" required>
+                <select id="cumulativeSubject2" name="subject2" required>
+                    <option value="botany">Botany</option>
+                    <option value="zoology">Zoology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                </select>
+                <input type="number" id="cumulativeMarks2" name="marks2" required>
+                <button type="button" id="addCumulativeButton">Add</button>
+                <button type="button" id="backFromCumulativeButton">Back</button>
+            </form>
+        </div>
+
+        <div class="form-container" id="grandFormContainer">
+            <h2>Grand Test</h2>
+            <form id="grandForm">
+                <input type="date" id="grandDate" name="date" required>
+                
+                <label for="grandBotanyMarks">Botany</label>
+                <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
+        
+                <label for="grandZoologyMarks">Zoology</label>
+                <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
+        
+                <label for="grandChemistryMarks">Chemistry</label>
+                <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
+        
+                <label for="grandPhysicsMarks">Physics</label>
+                <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
+        
+                <button type="button" id="addGrandButton">Add</button>
+                <button type="button" id="backFromGrandButton">Back</button>
+            </form>
+        </div>        
+    </div>
+
+    <script>
+        document.getElementById('weekendButton').addEventListener('click', () => {
+            document.getElementById('button-container').style.display = 'none';
+            document.getElementById('weekendFormContainer').style.display = 'block';
+            
+            // Set today's date as the default value
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('weekendDate').value = today;
+        });
+
+        document.getElementById('cumulativeButton').addEventListener('click', () => {
+            document.getElementById('button-container').style.display = 'none';
+            document.getElementById('cumulativeFormContainer').style.display = 'block';
+            
+            // Set today's date as the default value
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('cumulativeDate').value = today;
+        });
+
+        document.getElementById('grandTestButton').addEventListener('click', () => {
+            document.getElementById('button-container').style.display = 'none';
+            document.getElementById('grandFormContainer').style.display = 'block';
+            
+            // Set today's date as the default value
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('grandDate').value = today;
+        });
+
+        document.getElementById('backFromWeekendButton').addEventListener('click', () => {
+            document.getElementById('weekendFormContainer').style.display = 'none';
+            document.getElementById('button-container').style.display = 'block';
+        });
+
+        document.getElementById('backFromCumulativeButton').addEventListener('click', () => {
+            document.getElementById('cumulativeFormContainer').style.display = 'none';
+            document.getElementById('button-container').style.display = 'block';
+        });
+
+        document.getElementById('backFromGrandButton').addEventListener('click', () => {
+            document.getElementById('grandFormContainer').style.display = 'none';
+            document.getElementById('button-container').style.display = 'block';
+        });
+
+        document.getElementById('addWeekendButton').addEventListener('click', () => {
+            const date = document.getElementById('weekendDate').value;
+            const subject = document.getElementById('weekendSubject').value;
+            const marks = document.getElementById('weekendMarks').value;
+
+            if(date && subject && marks) {
+                alert(`Date: ${date}\nSubject: ${subject}\nMarks: ${marks}`);
+                // Add your functionality here to handle the form data
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        document.getElementById('addCumulativeButton').addEventListener('click', () => {
+            const date = document.getElementById('cumulativeDate').value;
+            const subject1 = document.getElementById('cumulativeSubject1').value;
+            const marks1 = document.getElementById('cumulativeMarks1').value;
+            const subject2 = document.getElementById('cumulativeSubject2').value;
+            const marks2 = document.getElementById('cumulativeMarks2').value;
+
+            if(date && subject1 && marks1 && subject2 && marks2) {
+                alert(`Date: ${date}\nSubject 1: ${subject1}\nMarks 1: ${marks1}\nSubject 2: ${subject2}\nMarks 2: ${marks2}`);
+                // Add your functionality here to handle the form data
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        document.getElementById('addGrandButton').addEventListener('click', () => {
+            const date = document.getElementById('grandDate').value;
+            const botanyMarks = document.getElementById('grandBotanyMarks').value;
+            const zoologyMarks = document.getElementById('grandZoologyMarks').value;
+            const chemistryMarks = document.getElementById('grandChemistryMarks').value;
+            const physicsMarks = document.getElementById('grandPhysicsMarks').value;
+
+            if(date && botanyMarks && zoologyMarks && chemistryMarks && physicsMarks) {
+                alert(`Date: ${date}\nBotany Marks: ${botanyMarks}\nZoology Marks: ${zoologyMarks}\nChemistry Marks: ${chemistryMarks}\nPhysics Marks: ${physicsMarks}`);
+                // Add your functionality here to handle the form data
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Set Botany as the default selected option
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('weekendSubject').value = 'botany';
+            document.getElementById('cumulativeSubject1').value = 'botany';
+            document.getElementById('cumulativeSubject2').value = 'botany';
+        });
+    </script>
+</body>
+</html>
