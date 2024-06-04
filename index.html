@@ -49,31 +49,12 @@
         }
 
         .form-container input[type="date"], .form-container select, .form-container input[type="number"] {
-            width: calc(50% - 10px);
+            width: 100%;
             padding: 14px;
-            margin: 8px 5px;
+            margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-        }
-
-        .form-container input[type="checkbox"] {
-            margin-top: 16px;
-        }
-
-        .form-row {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .total-row input {
-            width: calc(50% - 10px);
         }
     </style>
 </head>
@@ -95,7 +76,7 @@
                     <option value="chemistry">Chemistry</option>
                     <option value="physics">Physics</option>
                 </select>
-                <div class="form-row">
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="weekendMarks" name="marks" required>
                     <select id="weekendMarkSelect" name="markSelect" required>
                         <option value="120">120</option>
@@ -107,7 +88,7 @@
                 <input type="number" id="weekendFirstMark" name="firstMark" required>
                 <label for="weekendInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="weekendInMarkRange" name="inMarkRange" value="yes">
-                <div class="total-row">
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="weekendTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="weekendTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
@@ -115,36 +96,36 @@
                 <button type="button" id="backFromWeekendButton">Back</button>
             </form>
         </div>
-
+        
         <div class="form-container" id="cumulativeFormContainer">
             <h2>Cumulative Test</h2>
             <form id="cumulativeForm">
                 <input type="date" id="cumulativeDate" name="date" required>
-                <div class="form-row">
-                    <select id="cumulativeSubject1" name="subject1" required>
-                        <option value="botany">Botany</option>
-                        <option value="zoology">Zoology</option>
-                        <option value="chemistry">Chemistry</option>
-                        <option value="physics">Physics</option>
-                    </select>
+                <select id="cumulativeSubject1" name="subject1" required>
+                    <option value="botany">Botany</option>
+                    <option value="zoology">Zoology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                </select>
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="cumulativeMarks1" name="marks1" required>
-                    <input type="number" id="cumulativeMarksSelect1" name="marksSelect1" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect1" name="markSelect1" value="200" readonly>
                 </div>
-                <div class="form-row">
-                    <select id="cumulativeSubject2" name="subject2" required>
-                        <option value="botany">Botany</option>
-                        <option value="zoology">Zoology</option>
-                        <option value="chemistry">Chemistry</option>
-                        <option value="physics">Physics</option>
-                    </select>
+                <select id="cumulativeSubject2" name="subject2" required>
+                    <option value="botany">Botany</option>
+                    <option value="zoology">Zoology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                </select>
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="cumulativeMarks2" name="marks2" required>
-                    <input type="number" id="cumulativeMarksSelect2" name="marksSelect2" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect2" name="markSelect2" value="200" readonly>
                 </div>
                 <label for="cumulativeFirstMark">First Mark</label>
                 <input type="number" id="cumulativeFirstMark" name="firstMark1" required>
                 <label for="cumulativeInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="cumulativeInMarkRange" name="inMarkRange" value="yes">
-                <div class="total-row">
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="cumulativeTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="cumulativeTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
@@ -152,222 +133,168 @@
                 <button type="button" id="backFromCumulativeButton">Back</button>
             </form>
         </div>
-
+        
         <div class="form-container" id="grandFormContainer">
             <h2>Grand Test</h2>
             <form id="grandForm">
                 <input type="date" id="grandDate" name="date" required>
-                <div class="form-row">
-                    <select required readonly>
-                        <option value="botany">Physics</option>
-                    </select>
-                    <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
-                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarksSelect" value="180" readonly>
-                </div>
-                <div class="form-row">
-                    <select required readonly>
-                        <option value="botany">Chemistry</option>
-                    </select>
-                    <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
-                    <input type="number" id="grandChemistryMarksSelect" name="chemistryMarksSelect" value="180" readonly>
-                </div>
-                <div class="form-row">
-                    <select required readonly>
-                        <option value="botany">Botany</option>
-                    </select>
+                <label for="grandBotanyMarks">Botany</label>
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
-                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarksSelect" value="180" readonly>
+                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarkSelect" value="180" readonly>
                 </div>
-                <div class="form-row">
-                    <select required readonly>
-                        <option value="botany">Zoology</option>
-                    </select>
+                <label for="grandZoologyMarks">Zoology</label>
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
-                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarksSelect" value="180" readonly>
+                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarkSelect" value="180" readonly>
+                </div>
+                <label for="grandChemistryMarks">Chemistry</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
+                    <input type="number" id="grandChemistryMarksSelect" name="chemistryMarkSelect" value="180" readonly>
+                </div>
+                <label for="grandPhysicsMarks">Physics</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
+                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarkSelect" value="180" readonly>
                 </div>
                 <label for="grandFirstMark">First Mark</label>
                 <input type="number" id="grandFirstMark" name="firstPhysicsMark" required>
                 <label for="grandInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="grandInMarkRange" name="inMarkRange" value="yes">
-                <div class="total-row">
+                <div style="display: flex; gap: 10px;">
                     <input type="number" id="grandTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="grandTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
                 <button type="button" id="addGrandButton">Add</button>
                 <button type="button" id="backFromGrandButton">Back</button>
             </form>
-        </div>             
-    </div>
+        </div>
 
-    <script>
-        document.getElementById('weekendButton').addEventListener('click', () => {
-            document.getElementById('button-container').style.display = 'none';
-            document.getElementById('weekendFormContainer').style.display = 'block';
-            
-            // Set today's date as the default value
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('weekendDate').value = today;
-        });
-
-        document.getElementById('cumulativeButton').addEventListener('click', () => {
-            document.getElementById('button-container').style.display = 'none';
-            document.getElementById('cumulativeFormContainer').style.display = 'block';
-            
-            // Set today's date as the default value
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('cumulativeDate').value = today;
-        });
-
-        document.getElementById('grandTestButton').addEventListener('click', () => {
-            document.getElementById('button-container').style.display = 'none';
-            document.getElementById('grandFormContainer').style.display = 'block';
-            
-            // Set today's date as the default value
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('grandDate').value = today;
-        });
-
-        document.getElementById('backFromWeekendButton').addEventListener('click', () => {
-            document.getElementById('weekendFormContainer').style.display = 'none';
-            document.getElementById('button-container').style.display = 'block';
-        });
-
-        document.getElementById('backFromCumulativeButton').addEventListener('click', () => {
-            document.getElementById('cumulativeFormContainer').style.display = 'none';
-            document.getElementById('button-container').style.display = 'block';
-        });
-
-        document.getElementById('backFromGrandButton').addEventListener('click', () => {
-            document.getElementById('grandFormContainer').style.display = 'none';
-            document.getElementById('button-container').style.display = 'block';
-        });
-
-        document.getElementById('addWeekendButton').addEventListener('click', () => {
-            const date = document.getElementById('weekendDate').value;
-            const subject = document.getElementById('weekendSubject').value;
-            const marks = document.getElementById('weekendMarks').value;
-            const selectedMarks = document.getElementById('weekendMarkSelect').value;
-
-            if(date && subject && marks) {
-                alert(`Date: ${date}\nSubject: ${subject}\nMarks: ${marks}\nSelected Marks: ${selectedMarks}`);
-                // Add your functionality here to handle the form data
-            } else {
-                alert('Please fill in all fields.');
-            }
-
-            // Calculate totals
-            const totalMarks = parseInt(marks) || 0;
-            const totalSelectedMarks = parseInt(selectedMarks) || 0;
-            document.getElementById('weekendTotalMarks').value = totalMarks;
-            document.getElementById('weekendTotalSelectedMarks').value = totalSelectedMarks;
-        });
-
-        document.getElementById('addCumulativeButton').addEventListener('click', () => {
-            const date = document.getElementById('cumulativeDate').value;
-            const subject1 = document.getElementById('cumulativeSubject1').value;
-            const marks1 = document.getElementById('cumulativeMarks1').value;
-            const marksSelect1 = document.getElementById('cumulativeMarksSelect1').value;
-            const subject2 = document.getElementById('cumulativeSubject2').value;
-            const marks2 = document.getElementById('cumulativeMarks2').value;
-            const marksSelect2 = document.getElementById('cumulativeMarksSelect2').value;
-
-            if(date && subject1 && marks1 && subject2 && marks2) {
-                alert(`Date: ${date}\nSubject 1: ${subject1}\nMarks 1: ${marks1}\nSelected Marks 1: ${marksSelect1}\nSubject 2: ${subject2}\nMarks 2: ${marks2}\nSelected Marks 2: ${marksSelect2}`);
-                // Add your functionality here to handle the form data
-            } else {
-                alert('Please fill in all fields.');
-            }
-
-            // Calculate totals
-            const totalMarks = (parseInt(marks1) || 0) + (parseInt(marks2) || 0);
-            const totalSelectedMarks = (parseInt(marksSelect1) || 0) + (parseInt(marksSelect2) || 0);
-            document.getElementById('cumulativeTotalMarks').value = totalMarks;
-            document.getElementById('cumulativeTotalSelectedMarks').value = totalSelectedMarks;
-        });
-
-        document.getElementById('addGrandButton').addEventListener('click', () => {
-            const date = document.getElementById('grandDate').value;
-            const botanyMarks = document.getElementById('grandBotanyMarks').value;
-            const botanyMarksSelect = document.getElementById('grandBotanyMarksSelect').value;
-            const zoologyMarks = document.getElementById('grandZoologyMarks').value;
-            const zoologyMarksSelect = document.getElementById('grandZoologyMarksSelect').value;
-            const chemistryMarks = document.getElementById('grandChemistryMarks').value;
-            const chemistryMarksSelect = document.getElementById('grandChemistryMarksSelect').value;
-            const physicsMarks = document.getElementById('grandPhysicsMarks').value;
-            const physicsMarksSelect = document.getElementById('grandPhysicsMarksSelect').value;
-
-            if(date && botanyMarks && zoologyMarks && chemistryMarks && physicsMarks) {
-                alert(`Date: ${date}\nBotany Marks: ${botanyMarks}\nBotany Selected Marks: ${botanyMarksSelect}\nZoology Marks: ${zoologyMarks}\nZoology Selected Marks: ${zoologyMarksSelect}\nChemistry Marks: ${chemistryMarks}\nChemistry Selected Marks: ${chemistryMarksSelect}\nPhysics Marks: ${physicsMarks}\nPhysics Selected Marks: ${physicsMarksSelect}`);
-                // Add your functionality here to handle the form data
-            } else {
-                alert('Please fill in all fields.');
-            }
-
-            // Calculate totals
-            const totalMarks = (parseInt(botanyMarks) || 0) + (parseInt(zoologyMarks) || 0) + (parseInt(chemistryMarks) || 0) + (parseInt(physicsMarks) || 0);
-            const totalSelectedMarks = (parseInt(botanyMarksSelect) || 0) + (parseInt(zoologyMarksSelect) || 0) + (parseInt(chemistryMarksSelect) || 0) + (parseInt(physicsMarksSelect) || 0);
-            document.getElementById('grandTotalMarks').value = totalMarks;
-            document.getElementById('grandTotalSelectedMarks').value = totalSelectedMarks;
-        });
-
-                // Set Botany as the default selected option
-                document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('weekendSubject').value = 'botany';
-            document.getElementById('cumulativeSubject1').value = 'botany';
-            document.getElementById('cumulativeSubject2').value = 'botany';
-        });
-
-        // Function to update totals for Weekend Test
-        function updateWeekendTotals() {
-            const marks = parseInt(document.getElementById('weekendMarks').value) || 0;
-            const selectedMarks = parseInt(document.getElementById('weekendMarkSelect').value) || 0;
-            document.getElementById('weekendTotalMarks').value = marks;
-            document.getElementById('weekendTotalSelectedMarks').value = selectedMarks;
-        }
-
-        // Event listeners for Weekend Test marks input fields
-        document.getElementById('weekendMarks').addEventListener('input', updateWeekendTotals);
-        document.getElementById('weekendMarkSelect').addEventListener('change', updateWeekendTotals);
-
-        // Function to update totals for Cumulative Test
-        function updateCumulativeTotals() {
-            const marks1 = parseInt(document.getElementById('cumulativeMarks1').value) || 0;
-            const selectedMarks1 = parseInt(document.getElementById('cumulativeMarksSelect1').value) || 0;
-            const marks2 = parseInt(document.getElementById('cumulativeMarks2').value) || 0;
-            const selectedMarks2 = parseInt(document.getElementById('cumulativeMarksSelect2').value) || 0;
-            document.getElementById('cumulativeTotalMarks').value = marks1 + marks2;
-            document.getElementById('cumulativeTotalSelectedMarks').value = selectedMarks1 + selectedMarks2;
-        }
-
-        // Event listeners for Cumulative Test marks input fields
-        document.getElementById('cumulativeMarks1').addEventListener('input', updateCumulativeTotals);
-        document.getElementById('cumulativeMarksSelect1').addEventListener('change', updateCumulativeTotals);
-        document.getElementById('cumulativeMarks2').addEventListener('input', updateCumulativeTotals);
-        document.getElementById('cumulativeMarksSelect2').addEventListener('change', updateCumulativeTotals);
-
-        // Function to update totals for Grand Test
-        function updateGrandTotals() {
-            const botanyMarks = parseInt(document.getElementById('grandBotanyMarks').value) || 0;
-            const botanyMarksSelect = parseInt(document.getElementById('grandBotanyMarksSelect').value) || 0;
-            const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value) || 0;
-            const zoologyMarksSelect = parseInt(document.getElementById('grandZoologyMarksSelect').value) || 0;
-            const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value) || 0;
-            const chemistryMarksSelect = parseInt(document.getElementById('grandChemistryMarksSelect').value) || 0;
-            const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value) || 0;
-            const physicsMarksSelect = parseInt(document.getElementById('grandPhysicsMarksSelect').value) || 0;
-            document.getElementById('grandTotalMarks').value = botanyMarks + zoologyMarks + chemistryMarks + physicsMarks;
-            document.getElementById('grandTotalSelectedMarks').value = botanyMarksSelect + zoologyMarksSelect + chemistryMarksSelect + physicsMarksSelect;
-        }
-
-        // Event listeners for Grand Test marks input fields
-        document.getElementById('grandBotanyMarks').addEventListener('input', updateGrandTotals);
-        document.getElementById('grandBotanyMarksSelect').addEventListener('change', updateGrandTotals);
-        document.getElementById('grandZoologyMarks').addEventListener('input', updateGrandTotals);
-        document.getElementById('grandZoologyMarksSelect').addEventListener('change', updateGrandTotals);
-        document.getElementById('grandChemistryMarks').addEventListener('input', updateGrandTotals);
-        document.getElementById('grandChemistryMarksSelect').addEventListener('change', updateGrandTotals);
-        document.getElementById('grandPhysicsMarks').addEventListener('input', updateGrandTotals);
-        document.getElementById('grandPhysicsMarksSelect').addEventListener('change', updateGrandTotals);
-    </script>
-</body>
-</html>
+        <script>
+            document.getElementById('weekendButton').addEventListener('click', () => {
+                document.getElementById('button-container').style.display = 'none';
+                document.getElementById('weekendFormContainer').style.display = 'block';
+                
+                // Set today's date as the default value
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('weekendDate').value = today;
+            });
+    
+            document.getElementById('cumulativeButton').addEventListener('click', () => {
+                document.getElementById('button-container').style.display = 'none';
+                document.getElementById('cumulativeFormContainer').style.display = 'block';
+                
+                // Set today's date as the default value
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('cumulativeDate').value = today;
+            });
+    
+            document.getElementById('grandTestButton').addEventListener('click', () => {
+                document.getElementById('button-container').style.display = 'none';
+                document.getElementById('grandFormContainer').style.display = 'block';
+                
+                // Set today's date as the default value
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('grandDate').value = today;
+            });
+    
+            document.getElementById('backFromWeekendButton').addEventListener('click', () => {
+                document.getElementById('weekendFormContainer').style.display = 'none';
+                document.getElementById('button-container').style.display = 'block';
+            });
+    
+            document.getElementById('backFromCumulativeButton').addEventListener('click', () => {
+                document.getElementById('cumulativeFormContainer').style.display = 'none';
+                document.getElementById('button-container').style.display = 'block';
+            });
+    
+            document.getElementById('backFromGrandButton').addEventListener('click', () => {
+                document.getElementById('grandFormContainer').style.display = 'none';
+                document.getElementById('button-container').style.display = 'block';
+            });
+    
+            document.getElementById('addWeekendButton').addEventListener('click', () => {
+                const date = document.getElementById('weekendDate').value;
+                const subject = document.getElementById('weekendSubject').value;
+                const marks = parseInt(document.getElementById('weekendMarks').value);
+                const selectedMarks = parseInt(document.getElementById('weekendMarkSelect').value);
+                const firstMark = document.getElementById('weekendFirstMark').value;
+                const inMarkRange = document.getElementById('weekendInMarkRange').checked;
+    
+                if(date && subject && marks && selectedMarks) {
+                    alert(`Date: ${date}\nSubject: ${subject}\nMarks: ${marks}\nSelected Marks: ${selectedMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    
+                    // Calculate and display total marks
+                    const totalMarks = marks;
+                    const totalSelectedMarks = selectedMarks;
+                    document.getElementById('weekendTotalMarks').value = totalMarks;
+                    document.getElementById('weekendTotalSelectedMarks').value = totalSelectedMarks;
+                    
+                    // Add your functionality here to handle the form data
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+    
+            document.getElementById('addCumulativeButton').addEventListener('click', () => {
+                const date = document.getElementById('cumulativeDate').value;
+                const subject1 = document.getElementById('cumulativeSubject1').value;
+                const marks1 = parseInt(document.getElementById('cumulativeMarks1').value);
+                const subject2 = document.getElementById('cumulativeSubject2').value;
+                const marks2 = parseInt(document.getElementById('cumulativeMarks2').value);
+                const selectedMarks1 = parseInt(document.getElementById('cumulativeMarksSelect1').value);
+                const selectedMarks2 = parseInt(document.getElementById('cumulativeMarksSelect2').value);
+                const firstMark = document.getElementById('cumulativeFirstMark').value;
+                const inMarkRange = document.getElementById('cumulativeInMarkRange').checked;
+    
+                if(date && subject1 && marks1 && subject2 && marks2) {
+                    alert(`Date: ${date}\nSubject 1: ${subject1}\nMarks 1: ${marks1}\nSubject 2: ${subject2}\nMarks 2: ${marks2}\nSelected Marks 1: ${selectedMarks1}\nSelected Marks 2: ${selectedMarks2}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    
+                    // Calculate and display total marks
+                    const totalMarks = marks1 + marks2;
+                    const totalSelectedMarks = selectedMarks1 + selectedMarks2;
+                    document.getElementById('cumulativeTotalMarks').value = totalMarks;
+                    document.getElementById('cumulativeTotalSelectedMarks').value = totalSelectedMarks;
+    
+                    // Add your functionality here to handle the form data
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+    
+            document.getElementById('addGrandButton').addEventListener('click', () => {
+                const date = document.getElementById('grandDate').value;
+                const botanyMarks = parseInt(document.getElementById('grandBotanyMarks').value);
+                const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value);
+                const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value);
+                const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value);
+                const selectedMarks = 180; // All selected marks are 180 as per the requirements
+                const firstMark = document.getElementById('grandFirstMark').value;
+                const inMarkRange = document.getElementById('grandInMarkRange').checked;
+    
+                if(date && botanyMarks && zoologyMarks && chemistryMarks && physicsMarks) {
+                    alert(`Date: ${date}\nBotany Marks: ${botanyMarks}\nZoology Marks: ${zoologyMarks}\nChemistry Marks: ${chemistryMarks}\nPhysics Marks: ${physicsMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    
+                    // Calculate and display total marks
+                    const totalMarks = botanyMarks + zoologyMarks + chemistryMarks + physicsMarks;
+                    const totalSelectedMarks = 4 * selectedMarks; // All selected marks are 180
+                    document.getElementById('grandTotalMarks').value = totalMarks;
+                    document.getElementById('grandTotalSelectedMarks').value = totalSelectedMarks;
+    
+                    // Add your functionality here to handle the form data
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+    
+            // Set Botany as the default selected option
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('weekendSubject').value = 'botany';
+                document.getElementById('cumulativeSubject1').value = 'botany';
+                document.getElementById('cumulativeSubject2').value = 'botany';
+            });
+        </script>
+    </body>
+    </html>
+    
