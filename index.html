@@ -56,6 +56,19 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
+        .form-container select {
+            width: 48%;
+        }
+
+        .form-container input[type="number"].small {
+            width: 48%;
+        }
+
+        .form-container .marks-container {
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -76,9 +89,9 @@
                     <option value="chemistry">Chemistry</option>
                     <option value="physics">Physics</option>
                 </select>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="weekendMarks" name="marks" required>
-                    <select id="weekendMarkSelect" name="markSelect" required>
+                    <select id="weekendMarkSelect" name="markSelect" class="small" required>
                         <option value="120">120</option>
                         <option value="180">180</option>
                         <option value="240">240</option>
@@ -88,7 +101,7 @@
                 <input type="number" id="weekendFirstMark" name="firstMark" required>
                 <label for="weekendInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="weekendInMarkRange" name="inMarkRange" value="yes">
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="weekendTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="weekendTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
@@ -107,9 +120,9 @@
                     <option value="chemistry">Chemistry</option>
                     <option value="physics">Physics</option>
                 </select>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="cumulativeMarks1" name="marks1" required>
-                    <input type="number" id="cumulativeMarksSelect1" name="markSelect1" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect1" name="markSelect1" class="small" value="200" readonly>
                 </div>
                 <select id="cumulativeSubject2" name="subject2" required>
                     <option value="botany">Botany</option>
@@ -117,15 +130,15 @@
                     <option value="chemistry">Chemistry</option>
                     <option value="physics">Physics</option>
                 </select>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="cumulativeMarks2" name="marks2" required>
-                    <input type="number" id="cumulativeMarksSelect2" name="markSelect2" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect2" name="markSelect2" class="small" value="200" readonly>
                 </div>
                 <label for="cumulativeFirstMark">First Mark</label>
                 <input type="number" id="cumulativeFirstMark" name="firstMark1" required>
                 <label for="cumulativeInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="cumulativeInMarkRange" name="inMarkRange" value="yes">
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="cumulativeTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="cumulativeTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
@@ -139,30 +152,30 @@
             <form id="grandForm">
                 <input type="date" id="grandDate" name="date" required>
                 <label for="grandBotanyMarks">Botany</label>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
-                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarkSelect" value="180" readonly>
+                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarkSelect" class="small" value="180" readonly>
                 </div>
                 <label for="grandZoologyMarks">Zoology</label>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
-                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarkSelect" value="180" readonly>
+                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarkSelect" class="small" value="180" readonly>
                 </div>
                 <label for="grandChemistryMarks">Chemistry</label>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
-                    <input type="number" id="grandChemistryMarksSelect" name="chemistryMarkSelect" value="180" readonly>
+                    <input type="number" id="grandChemistryMarksSelect" name="chemistryMarkSelect" class="small" value="180" readonly>
                 </div>
                 <label for="grandPhysicsMarks">Physics</label>
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
-                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarkSelect" value="180" readonly>
+                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarkSelect" class="small" value="180" readonly>
                 </div>
                 <label for="grandFirstMark">First Mark</label>
                 <input type="number" id="grandFirstMark" name="firstPhysicsMark" required>
                 <label for="grandInMarkRange">In Mark Range?</label>
                 <input type="checkbox" id="grandInMarkRange" name="inMarkRange" value="yes">
-                <div style="display: flex; gap: 10px;">
+                <div class="marks-container">
                     <input type="number" id="grandTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
                     <input type="number" id="grandTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
                 </div>
@@ -296,5 +309,4 @@
             });
         </script>
     </body>
-    </html>
-    
+</html>
