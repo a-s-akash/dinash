@@ -64,7 +64,24 @@
         .form-container input[type="number"].small {
             width: 20%;
         }
-
+        .form-container input.big {
+            width: 20%;
+            font-size: 200%;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            text-align: center;
+            color: #142038;
+            font-weight: 550;
+        }
+        .form-container input.big1 {
+            width: 8%;
+            font-size: 130%;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            text-align: center;
+            color: #142038;
+            font-weight: 550;
+        }
         .form-container .marks-container {
             display: flex;
             gap: 10px;
@@ -80,8 +97,8 @@
         </div>
 
         <div class="form-container" id="weekendFormContainer">
-            <h2>Weekend Test</h2>
-            <form id="weekendForm">
+            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbxl_W3U1eLH7LmAtG0ZyvSdF8SE2Ev7D9bSIULM475wNiyEFZfCzyCdjTxe2iIdpZF2/exec" method="post">
+                <input id="testname" name="testname" class="big" value="Weekend Test" readonly>
                 <input type="date" id="weekendDate" name="date" required>
                 <select id="weekendSubject" name="subject" required>
                     <option value="botany">Botany</option>
@@ -91,28 +108,24 @@
                 </select>
                 <div class="marks-container">
                     <input type="number" id="weekendMarks" name="marks" required>
-                    <select id="weekendMarkSelect" name="markSelect" class="small" required>
+                    <select id="weekendMarkSelect" name="outoff" class="small" required>
                         <option value="120">120</option>
                         <option value="180">180</option>
                         <option value="240">240</option>
                     </select>
                 </div>
                 <label for="weekendFirstMark">First Mark</label>
-                <input type="number" id="weekendFirstMark" name="firstMark" required>
+                <input type="number" id="weekendFirstMark" name="first" required>
                 <label for="weekendInMarkRange">In Mark Range?</label>
-                <input type="checkbox" id="weekendInMarkRange" name="inMarkRange" value="yes">
-                <div class="marks-container">
-                    <input type="number" id="weekendTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
-                    <input type="number" id="weekendTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
-                </div>
-                <button type="button" id="addWeekendButton">Add</button>
+                <input type="checkbox" id="weekendInMarkRange" name="inrange" value="yes">
+                <button type="submit" id="addWeekendButton">Add</button>
                 <button type="button" id="backFromWeekendButton">Back</button>
             </form>
         </div>
         
         <div class="form-container" id="cumulativeFormContainer">
-            <h2>Cumulative Test</h2>
-            <form id="cumulativeForm">
+            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxqtxY5gaOYH5KnhKEassWJBa7Fw-mxShYcruf62HR5wndykURb6-2EEtDW5fDH33Wb/exec" method="post">
+                <input id="testname" name="testname" class="big" value="Cumulative Test" readonly>
                 <input type="date" id="cumulativeDate" name="date" required>
                 <select id="cumulativeSubject1" name="subject1" required>
                     <option value="botany">Botany</option>
@@ -122,7 +135,7 @@
                 </select>
                 <div class="marks-container">
                     <input type="number" id="cumulativeMarks1" name="marks1" required>
-                    <input type="number" id="cumulativeMarksSelect1" name="markSelect1" class="small" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect1" name="outoff1" class="small" value="200" readonly>
                 </div>
                 <select id="cumulativeSubject2" name="subject2" required>
                     <option value="botany">Botany</option>
@@ -132,59 +145,100 @@
                 </select>
                 <div class="marks-container">
                     <input type="number" id="cumulativeMarks2" name="marks2" required>
-                    <input type="number" id="cumulativeMarksSelect2" name="markSelect2" class="small" value="200" readonly>
+                    <input type="number" id="cumulativeMarksSelect2" name="outoff2" class="small" value="200" readonly>
                 </div>
                 <label for="cumulativeFirstMark">First Mark</label>
-                <input type="number" id="cumulativeFirstMark" name="firstMark1" required>
+                <input type="number" id="cumulativeFirstMark" name="first" required>
                 <label for="cumulativeInMarkRange">In Mark Range?</label>
-                <input type="checkbox" id="cumulativeInMarkRange" name="inMarkRange" value="yes">
+                <input type="checkbox" id="cumulativeInMarkRange" name="inrange" value="yes">
                 <div class="marks-container">
-                    <input type="number" id="cumulativeTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
-                    <input type="number" id="cumulativeTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
+                    <input type="number" id="cumulativeTotalMarks" name="total" placeholder="Total Marks" readonly>
+                    <input type="number" id="cumulativeTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
                 </div>
-                <button type="button" id="addCumulativeButton">Add</button>
+                <button type="submit" id="addCumulativeButton">Add</button>
                 <button type="button" id="backFromCumulativeButton">Back</button>
             </form>
         </div>
         
         <div class="form-container" id="grandFormContainer">
-            <h2>Grand Test</h2>
-            <form id="grandForm">
+            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbygoxX5n_3H47OLn7WpJ2WAZ6CggtZbG5whSSDu21mUO_a0nQoM6ybHivpNMYM0qMOE/exec" method="post">
+                <input id="testname" name="testname" class="big" value="Grand Test" readonly>
                 <input type="date" id="grandDate" name="date" required>
-                <label for="grandPhysicsMarks">Physics</label>
+                <input id="testname" name="testname" class="big1" value="Physics" readonly>
                 <div class="marks-container">
-                    <input type="number" id="grandPhysicsMarks" name="physicsMarks" required>
-                    <input type="number" id="grandPhysicsMarksSelect" name="physicsMarkSelect" class="small" value="180" readonly>
+                    <input type="number" id="grandPhysicsMarks" name="mark1" required>
+                    <input type="number" id="grandPhysicsMarksSelect" name="outoff1" class="small" value="180" readonly>
                 </div>
-                <label for="grandChemistryMarks">Chemistry</label>
+                <input id="testname" name="testname" class="big1" value="Chemistry" readonly>
                 <div class="marks-container">
-                    <input type="number" id="grandChemistryMarks" name="chemistryMarks" required>
-                    <input type="number" id="grandChemistryMarksSelect" name="chemistryMarkSelect" class="small" value="180" readonly>
+                    <input type="number" id="grandChemistryMarks" name="mark2" required>
+                    <input type="number" id="grandChemistryMarksSelect" name="outoff2" class="small" value="180" readonly>
                 </div>
-                <label for="grandBotanyMarks">Botany</label>
+                <input id="testname" name="testname" class="big1" value="Botany" readonly>
                 <div class="marks-container">
-                    <input type="number" id="grandBotanyMarks" name="botanyMarks" required>
-                    <input type="number" id="grandBotanyMarksSelect" name="botanyMarkSelect" class="small" value="180" readonly>
+                    <input type="number" id="grandBotanyMarks" name="mark3" required>
+                    <input type="number" id="grandBotanyMarksSelect" name="outoff3" class="small" value="180" readonly>
                 </div>
-                <label for="grandZoologyMarks">Zoology</label>
+                <input id="testname" name="testname" class="big1" value="Zoology" readonly>
                 <div class="marks-container">
-                    <input type="number" id="grandZoologyMarks" name="zoologyMarks" required>
-                    <input type="number" id="grandZoologyMarksSelect" name="zoologyMarkSelect" class="small" value="180" readonly>
+                    <input type="number" id="grandZoologyMarks" name="mark4" required>
+                    <input type="number" id="grandZoologyMarksSelect" name="outoff4" class="small" value="180" readonly>
                 </div>
                 <label for="grandFirstMark">First Mark</label>
-                <input type="number" id="grandFirstMark" name="firstPhysicsMark" required>
+                <input type="number" id="grandFirstMark" name="first" required>
                 <label for="grandInMarkRange">In Mark Range?</label>
-                <input type="checkbox" id="grandInMarkRange" name="inMarkRange" value="yes">
+                <input type="checkbox" id="grandInMarkRange" name="inrange" value="yes">
                 <div class="marks-container">
-                    <input type="number" id="grandTotalMarks" name="totalMarks" placeholder="Total Marks" readonly>
-                    <input type="number" id="grandTotalSelectedMarks" name="totalSelectedMarks" placeholder="Total Selected Marks" readonly>
+                    <input type="number" id="grandTotalMarks" name="total" placeholder="Total Marks" readonly>
+                    <input type="number" id="grandTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
                 </div>
-                <button type="button" id="addGrandButton">Add</button>
+                <button type="submit" id="addGrandButton">Add</button>
                 <button type="button" id="backFromGrandButton">Back</button>
             </form>
         </div>
 
         <script>
+        
+        // Function to update totals for Cumulative Test
+        function updateCumulativeTotals() {
+            const marks1 = parseInt(document.getElementById('cumulativeMarks1').value) || 0;
+            const selectedMarks1 = parseInt(document.getElementById('cumulativeMarksSelect1').value) || 0;
+            const marks2 = parseInt(document.getElementById('cumulativeMarks2').value) || 0;
+            const selectedMarks2 = parseInt(document.getElementById('cumulativeMarksSelect2').value) || 0;
+            document.getElementById('cumulativeTotalMarks').value = marks1 + marks2;
+            document.getElementById('cumulativeTotalSelectedMarks').value = selectedMarks1 + selectedMarks2;
+        }
+
+        // Event listeners for Cumulative Test marks input fields
+        document.getElementById('cumulativeMarks1').addEventListener('input', updateCumulativeTotals);
+        document.getElementById('cumulativeMarksSelect1').addEventListener('change', updateCumulativeTotals);
+        document.getElementById('cumulativeMarks2').addEventListener('input', updateCumulativeTotals);
+        document.getElementById('cumulativeMarksSelect2').addEventListener('change', updateCumulativeTotals);
+
+        // Function to update totals for Grand Test
+        function updateGrandTotals() {
+            const botanyMarks = parseInt(document.getElementById('grandBotanyMarks').value) || 0;
+            const botanyMarksSelect = parseInt(document.getElementById('grandBotanyMarksSelect').value) || 0;
+            const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value) || 0;
+            const zoologyMarksSelect = parseInt(document.getElementById('grandZoologyMarksSelect').value) || 0;
+            const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value) || 0;
+            const chemistryMarksSelect = parseInt(document.getElementById('grandChemistryMarksSelect').value) || 0;
+            const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value) || 0;
+            const physicsMarksSelect = parseInt(document.getElementById('grandPhysicsMarksSelect').value) || 0;
+            document.getElementById('grandTotalMarks').value = botanyMarks + zoologyMarks + chemistryMarks + physicsMarks;
+            document.getElementById('grandTotalSelectedMarks').value = botanyMarksSelect + zoologyMarksSelect + chemistryMarksSelect + physicsMarksSelect;
+        }
+
+        // Event listeners for Grand Test marks input fields
+        document.getElementById('grandBotanyMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandBotanyMarksSelect').addEventListener('change', updateGrandTotals);
+        document.getElementById('grandZoologyMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandZoologyMarksSelect').addEventListener('change', updateGrandTotals);
+        document.getElementById('grandChemistryMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandChemistryMarksSelect').addEventListener('change', updateGrandTotals);
+        document.getElementById('grandPhysicsMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandPhysicsMarksSelect').addEventListener('change', updateGrandTotals);
+    
             document.getElementById('weekendButton').addEventListener('click', () => {
                 document.getElementById('button-container').style.display = 'none';
                 document.getElementById('weekendFormContainer').style.display = 'block';
