@@ -89,7 +89,7 @@
 
         <div class="form-container" id="weekendFormContainer">
             <h2>Weekend Test</h2>
-            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbxl_W3U1eLH7LmAtG0ZyvSdF8SE2Ev7D9bSIULM475wNiyEFZfCzyCdjTxe2iIdpZF2/exec" method="post">
+            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbyLgD01rtRhbjDZ9-FNTg7DSyLGuzm4dQzew2pXGeSrN2XSKcFT9mVCKlPxr548_Rik/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
                 <input type="date" id="weekendDate" name="date" required>
                 <select id="weekendSubject" name="subject" required>
                     <option value="botany">Botany</option>
@@ -112,11 +112,12 @@
                 <button type="submit" id="addWeekendButton">Add</button>
                 <button type="button" id="backFromWeekendButton">Back</button>
             </form>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert('Mark Added successfully');}"></iframe>
         </div>
         
         <div class="form-container" id="cumulativeFormContainer">
             <h2>Cumulative Test</h2>
-            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxqtxY5gaOYH5KnhKEassWJBa7Fw-mxShYcruf62HR5wndykURb6-2EEtDW5fDH33Wb/exec" method="post">
+            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbx0HRYwGiHex9SrjgvzC_YeSSHoosDLKvDy9soh4qg-SSDaK9iSX0en5tLPXQP12e0E/exec" method="post">
                 <input type="date" id="cumulativeDate" name="date" required>
                 <select id="cumulativeSubject1" name="subject1" required>
                     <option value="botany">Botany</option>
@@ -153,7 +154,7 @@
         
         <div class="form-container" id="grandFormContainer">
             <h2>Grand Test</h2>
-            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbygoxX5n_3H47OLn7WpJ2WAZ6CggtZbG5whSSDu21mUO_a0nQoM6ybHivpNMYM0qMOE/exec" method="post">
+            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbzop5OmwnIMIIaP4WrWrTT_I7OZU6aui_-EAAHRSK0HNPxTjruR9yG7QcvWM1SAdHvZ/exec" method="post">
                 <input type="date" id="grandDate" name="date" required>
                 <label for="grandPhysicsMarks">Physics</label>
                 <input type="hidden" name="subject1" value="Physics">
@@ -242,6 +243,11 @@
                 const today = new Date().toISOString().split('T')[0];
                 document.getElementById('weekendDate').value = today;
             });
+
+            document.getElementById('backFromWeekendButton').addEventListener('click', function() {
+            document.getElementById('weekendFormContainer').style.display = 'none';
+            document.getElementById('button-container').style.display = 'block';
+        });
     
             document.getElementById('cumulativeButton').addEventListener('click', () => {
                 document.getElementById('button-container').style.display = 'none';
@@ -285,7 +291,7 @@
                 const inMarkRange = document.getElementById('weekendInMarkRange').checked;
     
                 if(date && subject && marks && selectedMarks) {
-                    alert(`Date: ${date}\nSubject: ${subject}\nMarks: ${marks}\nSelected Marks: ${selectedMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    //alert(`Date: ${date}\nSubject: ${subject}\nMarks: ${marks}\nSelected Marks: ${selectedMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
                     
                     // Calculate and display total marks
                     const totalMarks = marks;
@@ -311,7 +317,7 @@
                 const inMarkRange = document.getElementById('cumulativeInMarkRange').checked;
     
                 if(date && subject1 && marks1 && subject2 && marks2) {
-                    alert(`Date: ${date}\nSubject 1: ${subject1}\nMarks 1: ${marks1}\nSubject 2: ${subject2}\nMarks 2: ${marks2}\nSelected Marks 1: ${selectedMarks1}\nSelected Marks 2: ${selectedMarks2}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    //alert(`Date: ${date}\nSubject 1: ${subject1}\nMarks 1: ${marks1}\nSubject 2: ${subject2}\nMarks 2: ${marks2}\nSelected Marks 1: ${selectedMarks1}\nSelected Marks 2: ${selectedMarks2}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
                     
                     // Calculate and display total marks
                     const totalMarks = marks1 + marks2;
@@ -336,7 +342,7 @@
                 const inMarkRange = document.getElementById('grandInMarkRange').checked;
     
                 if(date && botanyMarks && zoologyMarks && chemistryMarks && physicsMarks) {
-                    alert(`Date: ${date}\nBotany Marks: ${botanyMarks}\nZoology Marks: ${zoologyMarks}\nChemistry Marks: ${chemistryMarks}\nPhysics Marks: ${physicsMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
+                    //alert(`Date: ${date}\nBotany Marks: ${botanyMarks}\nZoology Marks: ${zoologyMarks}\nChemistry Marks: ${chemistryMarks}\nPhysics Marks: ${physicsMarks}\nFirst Mark: ${firstMark}\nIn Mark Range: ${inMarkRange}`);
                     
                     // Calculate and display total marks
                     const totalMarks = botanyMarks + zoologyMarks + chemistryMarks + physicsMarks;
