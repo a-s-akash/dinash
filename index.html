@@ -73,15 +73,6 @@
             color: #142038;
             font-weight: 550;
         }
-        .form-container input.big1 {
-            width: 8%;
-            font-size: 130%;
-            background-color: #ccc;
-            border: 1px solid #ccc;
-            text-align: center;
-            color: #142038;
-            font-weight: 550;
-        }
         .form-container .marks-container {
             display: flex;
             gap: 10px;
@@ -97,8 +88,8 @@
         </div>
 
         <div class="form-container" id="weekendFormContainer">
+            <h2>Weekend Test</h2>
             <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbxl_W3U1eLH7LmAtG0ZyvSdF8SE2Ev7D9bSIULM475wNiyEFZfCzyCdjTxe2iIdpZF2/exec" method="post">
-                <input id="testname" name="testname" class="big" value="Weekend Test" readonly>
                 <input type="date" id="weekendDate" name="date" required>
                 <select id="weekendSubject" name="subject" required>
                     <option value="botany">Botany</option>
@@ -124,8 +115,8 @@
         </div>
         
         <div class="form-container" id="cumulativeFormContainer">
+            <h2>Cumulative Test</h2>
             <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxqtxY5gaOYH5KnhKEassWJBa7Fw-mxShYcruf62HR5wndykURb6-2EEtDW5fDH33Wb/exec" method="post">
-                <input id="testname" name="testname" class="big" value="Cumulative Test" readonly>
                 <input type="date" id="cumulativeDate" name="date" required>
                 <select id="cumulativeSubject1" name="subject1" required>
                     <option value="botany">Botany</option>
@@ -161,27 +152,31 @@
         </div>
         
         <div class="form-container" id="grandFormContainer">
+            <h2>Grand Test</h2>
             <form id="grandForm" action="https://script.google.com/macros/s/AKfycbygoxX5n_3H47OLn7WpJ2WAZ6CggtZbG5whSSDu21mUO_a0nQoM6ybHivpNMYM0qMOE/exec" method="post">
-                <input id="testname" name="testname" class="big" value="Grand Test" readonly>
                 <input type="date" id="grandDate" name="date" required>
-                <input id="testname" name="testname" class="big1" value="Physics" readonly>
+                <label for="grandPhysicsMarks">Physics</label>
+                <input type="hidden" name="subject1" value="Physics">
                 <div class="marks-container">
-                    <input type="number" id="grandPhysicsMarks" name="mark1" required>
+                    <input type="number" id="grandPhysicsMarks" name="marks1" required>
                     <input type="number" id="grandPhysicsMarksSelect" name="outoff1" class="small" value="180" readonly>
                 </div>
-                <input id="testname" name="testname" class="big1" value="Chemistry" readonly>
+                <label for="grandChemistryMarks">Chemistry</label>
+                <input type="hidden" name="subject2" value="Chemistry">
                 <div class="marks-container">
-                    <input type="number" id="grandChemistryMarks" name="mark2" required>
+                    <input type="number" id="grandChemistryMarks" name="marks2" required>
                     <input type="number" id="grandChemistryMarksSelect" name="outoff2" class="small" value="180" readonly>
                 </div>
-                <input id="testname" name="testname" class="big1" value="Botany" readonly>
+                <label for="grandBotanyMarks">Botany</label>
+                <input type="hidden" name="subject3" value="Botany">
                 <div class="marks-container">
-                    <input type="number" id="grandBotanyMarks" name="mark3" required>
+                    <input type="number" id="grandBotanyMarks" name="marks3" required>
                     <input type="number" id="grandBotanyMarksSelect" name="outoff3" class="small" value="180" readonly>
                 </div>
-                <input id="testname" name="testname" class="big1" value="Zoology" readonly>
+                <label for="grandZoologyMarks">Zoology</label>
+                <input type="hidden" name="subject4" value="Zoology">
                 <div class="marks-container">
-                    <input type="number" id="grandZoologyMarks" name="mark4" required>
+                    <input type="number" id="grandZoologyMarks" name="marks4" required>
                     <input type="number" id="grandZoologyMarksSelect" name="outoff4" class="small" value="180" readonly>
                 </div>
                 <label for="grandFirstMark">First Mark</label>
