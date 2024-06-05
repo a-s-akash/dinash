@@ -89,7 +89,7 @@
 
         <div class="form-container" id="weekendFormContainer">
             <h2>Weekend Test</h2>
-            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbyLgD01rtRhbjDZ9-FNTg7DSyLGuzm4dQzew2pXGeSrN2XSKcFT9mVCKlPxr548_Rik/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbzJqEv1cNLObR9tv4WP3zl1JXlR3SfPBOx-yenMJHN4bN20Heh5Ga3Odu0rdUEInkd4/exec" method="POST">
                 <input type="date" id="weekendDate" name="date" required>
                 <select id="weekendSubject" name="subject" required>
                     <option value="botany">Botany</option>
@@ -112,12 +112,10 @@
                 <button type="submit" id="addWeekendButton">Add</button>
                 <button type="button" id="backFromWeekendButton">Back</button>
             </form>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert('Mark Added successfully');}"></iframe>
         </div>
-        
         <div class="form-container" id="cumulativeFormContainer">
             <h2>Cumulative Test</h2>
-            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbx0HRYwGiHex9SrjgvzC_YeSSHoosDLKvDy9soh4qg-SSDaK9iSX0en5tLPXQP12e0E/exec" method="post">
+            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxgP_39HhYsGwF217uQsezDkxf52hbD06ZTZmMhIfGJX52_9E-0HhhcVrJ6c91YE3Fa/exec" method="POST">
                 <input type="date" id="cumulativeDate" name="date" required>
                 <select id="cumulativeSubject1" name="subject1" required>
                     <option value="botany">Botany</option>
@@ -154,7 +152,7 @@
         
         <div class="form-container" id="grandFormContainer">
             <h2>Grand Test</h2>
-            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbzop5OmwnIMIIaP4WrWrTT_I7OZU6aui_-EAAHRSK0HNPxTjruR9yG7QcvWM1SAdHvZ/exec" method="post">
+            <form id="grandForm" action="https://script.google.com/macros/s/AKfycby_1bqP6LtyjeIPcXyqsNLDKagTml8FyqSiJ-X42jYrg1KtO03o_9D2rWLs3zK9dkqh/exec" method="POST">
                 <input type="date" id="grandDate" name="date" required>
                 <label for="grandPhysicsMarks">Physics</label>
                 <input type="hidden" name="subject1" value="Physics">
@@ -243,11 +241,6 @@
                 const today = new Date().toISOString().split('T')[0];
                 document.getElementById('weekendDate').value = today;
             });
-
-            document.getElementById('backFromWeekendButton').addEventListener('click', function() {
-            document.getElementById('weekendFormContainer').style.display = 'none';
-            document.getElementById('button-container').style.display = 'block';
-        });
     
             document.getElementById('cumulativeButton').addEventListener('click', () => {
                 document.getElementById('button-container').style.display = 'none';
