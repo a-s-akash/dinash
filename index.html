@@ -87,6 +87,19 @@
         .markrange{
             font-size: 140%;
         }
+        .del-button {
+            width: 100% !important;
+            background-color: rgb(196, 1, 1) !important; /* Red color for back buttons */
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+        .del-button:hover {
+            background-color: #720a0a !important; /* Darker red on hover */
+        }
         .back-button {
             width: 100% !important;
             background-color: #f88d00 !important; /* Red color for back buttons */
@@ -172,7 +185,7 @@
 
         <div class="form-container" id="weekendFormContainer">
             <h2>Weekend Test</h2>
-            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbwgIH62x-E_rozuzChQqyb617o0mPexHVXMTDgpuNvSO-7thEb_nEC8EX5F6UfG1oun/exec" method="POST">
+            <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbxBRs8wxwPFy3WJw0D2dURfQE4z-r-QFNiSdef3fJF9qMfQd6v4ftfC_3uNbJPhJOhV/exec" method="POST">
                 <input type="date" id="weekendDate" name="date" required>
                 <select id="weekendSubject" name="subject" required>
                     <option value="botany">Botany</option>
@@ -194,11 +207,12 @@
                 <input type="checkbox" id="weekendInMarkRange" class="markrange" name="inrange" value="yes">
                 <button type="submit" id="addWeekendButton">Add</button>
                 <button type="button" id="backFromWeekendButton" class="back-button">Back</button>
+                <button type="submit" id="delWeekendButton" onclick="this.value='delete'" value="nodelete" name="del" class="del-button">Delete</button>
             </form>
         </div>
         <div class="form-container" id="cumulativeFormContainer">
             <h2>Cumulative Test</h2>
-            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxZ5_pFpHepX3XFt-29-kCaSOVhalP_ip8z4pbMZrG-nT42H2iwDMaeVcO_letBrgqK/exec" method="POST">
+            <form id="cumulativeForm" action="https://script.google.com/macros/s/AKfycbxMH0s-TPRWvNpCl-5bWcsC9WQTmzS8y6hShIZeLmYFWbS-1EYG-NlOlE87-g8y-Xmi/exec" method="POST">
                 <input type="date" id="cumulativeDate" name="date" required>
                 <select id="cumulativeSubject1" name="subject1" required>
                     <option value="botany">Botany</option>
@@ -222,20 +236,21 @@
                 </div>
                 <label for="cumulativeFirstMark">First Mark</label>
                 <input type="number" id="cumulativeFirstMark" name="first" required>
-                <label for="cumulativeInMarkRange">In Mark Range?</label>
-                <input type="checkbox" id="cumulativeInMarkRange" name="inrange" value="yes">
+                <label for="cumulativeInMarkRange" class="markrange">Mark Range</label>
+                <input type="checkbox" id="cumulativeInMarkRange" class="markrange" name="inrange" value="yes">
                 <div class="marks-container">
                     <input type="number" id="cumulativeTotalMarks" name="total" placeholder="Total Marks" readonly>
                     <input type="number" id="cumulativeTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
                 </div>
                 <button type="submit" id="addCumulativeButton">Add</button>
                 <button type="button" id="backFromCumulativeButton"  class="back-button">Back</button>
+                <button type="submit" id="delCumulativeButton" onclick="this.value='delete'" value="nodelete" name="del" class="del-button">Delete</button>
             </form>
         </div>
         
         <div class="form-container" id="grandFormContainer">
             <h2>Grand Test</h2>
-            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbxnA-Ks12F1GQEl2xbQumnzAPqGRUhQfvf-6qM0nna5HiUmNiQvbwCjtg08ae28Se5I/exec" method="POST">
+            <form id="grandForm" action="https://script.google.com/macros/s/AKfycbx2ROO0azc9KwyH3lJ6jXm6Lnvi2ozJAOV6UW904hM-WBn7-WvBe1kto7ytbZNWBEwX/exec" method="POST">
                 <input type="date" id="grandDate" name="date" required>
                 <label for="grandPhysicsMarks">Physics</label>
                 <input type="hidden" name="subject1" value="Physics">
@@ -263,14 +278,15 @@
                 </div>
                 <label for="grandFirstMark">First Mark</label>
                 <input type="number" id="grandFirstMark" name="first" required>
-                <label for="grandInMarkRange">In Mark Range?</label>
-                <input type="checkbox" id="grandInMarkRange" name="inrange" value="yes">
+                <label for="grandInMarkRange" class="markrange">Mark Range</label>
+                <input type="checkbox" id="grandInMarkRange" class="markrange" name="inrange" value="yes">
                 <div class="marks-container">
                     <input type="number" id="grandTotalMarks" name="total" placeholder="Total Marks" readonly>
                     <input type="number" id="grandTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
                 </div>
                 <button type="submit" id="addGrandButton">Add</button>
                 <button type="button" id="backFromGrandButton"  class="back-button">Back</button>
+                <button type="submit" id="delGrandButton" onclick="this.value='delete'" value="nodelete" name="del" class="del-button">Delete</button>
             </form>
         </div>
         <div class="form-container" id="viewScoresContainer">
@@ -487,20 +503,20 @@
             document.getElementById('button-container').style.display = 'none';
         document.getElementById('viewScoresContainer').style.display = 'none';
             document.getElementById('data-container').style.display = 'block';
-        fetchData('https://script.google.com/macros/s/AKfycbwgIH62x-E_rozuzChQqyb617o0mPexHVXMTDgpuNvSO-7thEb_nEC8EX5F6UfG1oun/exec');
+        fetchData('https://script.google.com/macros/s/AKfycbxBRs8wxwPFy3WJw0D2dURfQE4z-r-QFNiSdef3fJF9qMfQd6v4ftfC_3uNbJPhJOhV/exec');
     });
 
     document.getElementById('cumulativeScoresButton').addEventListener('click', () => {
             document.getElementById('button-container').style.display = 'none';
         document.getElementById('viewScoresContainer').style.display = 'none';
             document.getElementById('data-container').style.display = 'block';
-        fetchData('https://script.google.com/macros/s/AKfycbxZ5_pFpHepX3XFt-29-kCaSOVhalP_ip8z4pbMZrG-nT42H2iwDMaeVcO_letBrgqK/exec');
+        fetchData('https://script.google.com/macros/s/AKfycbxMH0s-TPRWvNpCl-5bWcsC9WQTmzS8y6hShIZeLmYFWbS-1EYG-NlOlE87-g8y-Xmi/exec');
     });
     document.getElementById('grandScoresButton').addEventListener('click', () => {
             document.getElementById('button-container').style.display = 'none';
         document.getElementById('viewScoresContainer').style.display = 'none';
             document.getElementById('data-container').style.display = 'block';
-        fetchData('https://script.google.com/macros/s/AKfycbxnA-Ks12F1GQEl2xbQumnzAPqGRUhQfvf-6qM0nna5HiUmNiQvbwCjtg08ae28Se5I/exec');
+        fetchData('https://script.google.com/macros/s/AKfycbx2ROO0azc9KwyH3lJ6jXm6Lnvi2ozJAOV6UW904hM-WBn7-WvBe1kto7ytbZNWBEwX/exec');
     });
     
     document.getElementById('allScoresButton').addEventListener('click', () => {
