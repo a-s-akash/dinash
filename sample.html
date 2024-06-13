@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<table id="subjectsTable">
+    <thead>
+        <tr>
+            <th>Previous</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Next</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Rows will be inserted here dynamically -->
+    </tbody>
+</table>
+
+<script>
+    const inputString = "Physics - 11/180";
+    const subjectsArray = inputString.split(',');
+
+    const tbody = document.querySelector('#subjectsTable tbody');
+
+    subjectsArray.forEach((subject, index) => {
+        const [subjectName, marks] = subject.split(' - ');
+
+        const row = document.createElement('tr');
+
+        if (index === 0) {
+            const previousCell = document.createElement('td');
+            previousCell.rowSpan = subjectsArray.length;
+            previousCell.textContent = "Previous Content";
+            row.appendChild(previousCell);
+        }
+
+        const subjectCell = document.createElement('td');
+        subjectCell.textContent = subjectName;
+        row.appendChild(subjectCell);
+
+        const marksCell = document.createElement('td');
+        marksCell.textContent = marks;
+        row.appendChild(marksCell);
+
+        if (index === 0) {
+            const nextCell = document.createElement('td');
+            nextCell.rowSpan = subjectsArray.length;
+            nextCell.textContent = "Next Content";
+            row.appendChild(nextCell);
+        }
+
+        tbody.appendChild(row);
+    });
+</script>
+
+</body>
+</html>
