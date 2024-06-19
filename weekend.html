@@ -128,7 +128,7 @@
             document.getElementById('weekendDate').value = today;
         });
         
-        document.getElementById('weekendSubject').addEventListener('click', () => {
+        document.getElementById('weekendSubject').addEventListener('change', () => {
             const subject = document.getElementById('weekendSubject').value;
             if (subject === "botany"){document.getElementById('weekendMarkSelect').value = 240;}
             else if (subject === "zoology"){document.getElementById('weekendMarkSelect').value = 240;}
