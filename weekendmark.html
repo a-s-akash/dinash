@@ -64,7 +64,6 @@
                     <th>Date</th>
                     <th>Subject</th>
                     <th>Marks</th>
-                    <th>Total</th>
                     <th>First</th>
                     <th>Range</th>
                 </tr>
@@ -115,11 +114,6 @@
                     tr.appendChild(marksCell);
 
                     if (index === 0) {
-
-                        const totalCell = document.createElement('td');
-                        totalCell.rowSpan = subjectsArray.length;
-                        totalCell.textContent = total;
-                        tr.appendChild(totalCell);
 
                         const firstCell = document.createElement('td');
                         firstCell.rowSpan = subjectsArray.length;
