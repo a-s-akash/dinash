@@ -109,25 +109,25 @@
             <input type="hidden" name="subject1" value="Physics">
             <div class="marks-container">
                 <input type="number" id="grandPhysicsMarks" name="marks1" required>
-                <input type="number" id="grandPhysicsMarksSelect" name="outoff1" class="small" value="180" readonly>
+                <input type="number" id="grandPhysicsMarksSelect" name="outoff1" class="small" value="180" >
             </div>
             <label for="grandChemistryMarks">Chemistry</label>
             <input type="hidden" name="subject2" value="Chemistry">
             <div class="marks-container">
                 <input type="number" id="grandChemistryMarks" name="marks2" required>
-                <input type="number" id="grandChemistryMarksSelect" name="outoff2" class="small" value="180" readonly>
+                <input type="number" id="grandChemistryMarksSelect" name="outoff2" class="small" value="180" >
             </div>
             <label for="grandBotanyMarks">Botany</label>
             <input type="hidden" name="subject3" value="Botany">
             <div class="marks-container">
                 <input type="number" id="grandBotanyMarks" name="marks3" required>
-                <input type="number" id="grandBotanyMarksSelect" name="outoff3" class="small" value="180" readonly>
+                <input type="number" id="grandBotanyMarksSelect" name="outoff3" class="small" value="180" >
             </div>
             <label for="grandZoologyMarks">Zoology</label>
             <input type="hidden" name="subject4" value="Zoology">
             <div class="marks-container">
                 <input type="number" id="grandZoologyMarks" name="marks4" required>
-                <input type="number" id="grandZoologyMarksSelect" name="outoff4" class="small" value="180" readonly>
+                <input type="number" id="grandZoologyMarksSelect" name="outoff4" class="small" value="180" >
             </div>
             <label for="grandFirstMark">First Mark</label>
             <input type="number" id="grandFirstMark" name="first" required>
@@ -170,13 +170,16 @@
             const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value);
             const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value);
             const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value);
-            const selectedMarks = 180;
+            const poutoff = parseInt(document.getElementById('grandPhysicsMarksSelect').value);
+            const coutoff = parseInt(document.getElementById('grandChemistryMarksSelect').value);
+            const boutoff = parseInt(document.getElementById('grandBotanyMarksSelect').value);
+            const zoutoff = parseInt(document.getElementById('grandZoologyMarksSelect').value);
             const firstMark = document.getElementById('grandFirstMark').value;
             const inMarkRange = document.getElementById('grandInMarkRange').checked;
 
             if(date && botanyMarks && zoologyMarks && chemistryMarks && physicsMarks) {
                 const totalMarks = botanyMarks + zoologyMarks + chemistryMarks + physicsMarks;
-                const totalSelectedMarks = 4 * selectedMarks;
+                const totalSelectedMarks = poutoff + coutoff + boutoff + zoutoff;
                 document.getElementById('grandTotalMarks').value = totalMarks;
                 document.getElementById('grandTotalSelectedMarks').value = totalSelectedMarks;
             } 
