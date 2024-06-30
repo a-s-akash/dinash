@@ -120,13 +120,10 @@
 
                 const tr = document.createElement('tr');
                 tr.classList.add(className);
-                const [x1,x2] = marks.split("/");
                 if (index === 0) {
                     const dateCell = document.createElement('td');
                     dateCell.rowSpan = subjectsArray.length;
                     dateCell.textContent = date;
-                    if (x1===x2)
-                    dateCell.classList.add('perfect-score');
                     tr.appendChild(dateCell);
                 }
 
@@ -138,6 +135,7 @@
                 const marksCell = document.createElement('td');
                 marksCell.textContent = marks;
                 marksCell.classList.add('subject-mark');
+                const [x1,x2] = marks.split("/");
                 if (x1 === x2) {
                     subjectCell.classList.add('perfect-score');
                     marksCell.classList.add('perfect-score');
@@ -148,15 +146,11 @@
                     const firstCell = document.createElement('td');
                     firstCell.rowSpan = subjectsArray.length;
                     firstCell.textContent = first;
-                    if (x1===x2)
-                    firstCell.classList.add('perfect-score');
                     tr.appendChild(firstCell);
 
                     const rangeCell = document.createElement('td');
                     rangeCell.rowSpan = subjectsArray.length;
                     rangeCell.textContent = range;
-                    if (x1===x2)
-                    rangeCell.classList.add('perfect-score');
                     tr.appendChild(rangeCell);
                 }
 
