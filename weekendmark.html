@@ -26,7 +26,13 @@
             text-align: center;
         }
 
-        #data-table tbody tr {
+        #data-table tbody tr.data1 {
+            background-color: #eaf89d;
+            color: #000000;
+            text-align: center;
+        }
+
+        #data-table tbody tr.data2 {
             background-color: #f9f9f9;
             color: #000000;
             text-align: center;
@@ -49,10 +55,8 @@
             text-align: center;
         }
 
-        #data-table tbody tr:hover {
-            background-color: #f1f1f1;
-            color: #333333;
-            text-align: center;
+        .perfect-score {
+            background-color: #03ff25;
         }
     </style>
 </head>
@@ -76,65 +80,91 @@
     
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        fetchData('https://script.google.com/macros/s/AKfycbyI75Y2yELkDG_WihjP3HI5js9lDdwyg8TgkobHUwB3OTkzTpYbX5dlDK7Di4folZxX/exec');
+        fetchData('https://script.google.com/macros/s/AKfycbw94f0Kzwumm49dF8AcdKR9cAzsCcausIcAcE1lF--Ue2iNbqAOkseN9qaXisShTFuD2w/exec','https://script.google.com/macros/s/AKfycbyI75Y2yELkDG_WihjP3HI5js9lDdwyg8TgkobHUwB3OTkzTpYbX5dlDK7Di4folZxX/exec');
     });
 
-    function fetchData(s) {
-        fetch(s)
-        .then(response => response.json())
-        .then(data => {
+    async function fetchData(s1, s2) {
+        try {
+            const data1 = await fetch(s1).then(response => response.json());
+            const data2 = await fetch(s2).then(response => response.json());
+
             const tableBody = document.querySelector('#data-table tbody');
             tableBody.innerHTML = '';
 
-            data.forEach(row => {
-                if (Array.isArray(row) && row.length >= 5) {
-                    const [date, subjectsStr, total, first, range, next] = row;
-                    const subjectsArray = subjectsStr.split(',');
+            const maxLength = Math.max(data1.length, data2.length);
+            let dataIndex1 = 0;
+            let dataIndex2 = 0;
 
-                    subjectsArray.forEach((subject, index) => {
-                    const [subjectName, marks] = subject.split(' - ');
-
-                    const tr = document.createElement('tr');
-
-                    if (index === 0) {
-                        const dateCell = document.createElement('td');
-                        dateCell.rowSpan = subjectsArray.length;
-                        dateCell.textContent = date;
-                        tr.appendChild(dateCell);
-                    }
-
-                    const subjectCell = document.createElement('td');
-                    subjectCell.textContent = subjectName;
-                    subjectCell.classList.add('subject-mark');
-                    tr.appendChild(subjectCell);
-
-                    const marksCell = document.createElement('td');
-                    marksCell.textContent = marks;
-                    marksCell.classList.add('subject-mark');
-                    tr.appendChild(marksCell);
-
-                    if (index === 0) {
-
-                        const firstCell = document.createElement('td');
-                        firstCell.rowSpan = subjectsArray.length;
-                        firstCell.textContent = first;
-                        tr.appendChild(firstCell);
-
-                        const rangeCell = document.createElement('td');
-                        rangeCell.rowSpan = subjectsArray.length;
-                        rangeCell.textContent = range;
-                        tr.appendChild(rangeCell);
-                    }
-
-                    tableBody.appendChild(tr);
-                    });
+            for (let i = 0; i < maxLength; i++) {
+                if (dataIndex1 < data1.length) {
+                    appendRow(data1[dataIndex1], tableBody, 'data1');
+                    dataIndex1++;
                 }
-                else {
-                    console.error('Unexpected row format:', row);
+                if (dataIndex2 < data2.length) {
+                    appendRow(data2[dataIndex2], tableBody, 'data2');
+                    dataIndex2++;
                 }
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    function appendRow(row, tableBody, className) {
+        if (Array.isArray(row) && row.length >= 5) {
+            const [date, subjectsStr, total, first, range, next] = row;
+            const subjectsArray = subjectsStr.split(',');
+
+            subjectsArray.forEach((subject, index) => {
+                const [subjectName, marks] = subject.split(' - ');
+
+                const tr = document.createElement('tr');
+                tr.classList.add(className);
+                const [x1,x2] = marks.split("/");
+                if (index === 0) {
+                    const dateCell = document.createElement('td');
+                    dateCell.rowSpan = subjectsArray.length;
+                    dateCell.textContent = date;
+                    if (x1===x2)
+                    dateCell.classList.add('perfect-score');
+                    tr.appendChild(dateCell);
+                }
+
+                const subjectCell = document.createElement('td');
+                subjectCell.textContent = subjectName;
+                subjectCell.classList.add('subject-mark');
+                tr.appendChild(subjectCell);
+
+                const marksCell = document.createElement('td');
+                marksCell.textContent = marks;
+                marksCell.classList.add('subject-mark');
+                if (x1 === x2) {
+                    subjectCell.classList.add('perfect-score');
+                    marksCell.classList.add('perfect-score');
+                }
+                tr.appendChild(marksCell);
+
+                if (index === 0) {
+                    const firstCell = document.createElement('td');
+                    firstCell.rowSpan = subjectsArray.length;
+                    firstCell.textContent = first;
+                    if (x1===x2)
+                    firstCell.classList.add('perfect-score');
+                    tr.appendChild(firstCell);
+
+                    const rangeCell = document.createElement('td');
+                    rangeCell.rowSpan = subjectsArray.length;
+                    rangeCell.textContent = range;
+                    if (x1===x2)
+                    rangeCell.classList.add('perfect-score');
+                    tr.appendChild(rangeCell);
+                }
+
+                tableBody.appendChild(tr);
             });
-        })
-        .catch(error => console.error('Error fetching data:', error));
+        } else {
+            console.error('Unexpected row format:', row);
+        }
     }
     </script>
 </body>
