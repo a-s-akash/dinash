@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Test</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #142038;
+        }
+        
+        .form-container{
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container button {
+            width: 100%;
+            background-color: #142038;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #1D4FAE;
+        }
+
+        .form-container input[type="date"], .form-container select, .form-container input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-container select {
+            width: 100%;
+        }
+
+        .form-container input[type="number"].small {
+            width: 20%;
+        }
+
+        .form-container input.big {
+            width: 20%;
+            font-size: 200%;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            text-align: center;
+            color: #142038;
+            font-weight: 550;
+        }
+
+        .form-container .marks-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .markrange[type="checkbox"] {
+            transform: scale(1.5);
+        }
+
+        .markrange{
+            font-size: 140%;
+        }
+
+        .back-button1 {
+            width: 100% !important;
+            background-color: #4da802 !important;
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+
+        .back-button1:hover {
+            background-color: #357401 !important;
+        }
+    </style>
+</head>
+<body>    
+    <div class="form-container" id="grandFormContainer">
+        <h2>Unit Test</h2>
+        <form id="grandForm" action="https://script.google.com/macros/s/AKfycbz0NSG6k7sa4LIqt7D4wpDLpTfVWoMdfTU96geVd7q7ikGCJoWvv4TslgmCM-MTXMO9/exec" method="POST">
+            <input type="date" id="grandDate" name="date" required>
+            <label for="grandPhysicsMarks">Physics</label>
+            <input type="hidden" name="subject1" value="Physics">
+            <div class="marks-container">
+                <input type="number" id="grandPhysicsMarks" name="marks1" required>
+                <input type="number" id="grandPhysicsMarksSelect" name="outoff1" class="small" value="320" >
+            </div>
+            <label for="grandZoologyMarks">Zoology</label>
+            <input type="hidden" name="subject2" value="Zoology">
+            <div class="marks-container">
+                <input type="number" id="grandZoologyMarks" name="marks2" required>
+                <input type="number" id="grandZoologyMarksSelect" name="outoff2" class="small" value="400" >
+            </div>
+            <label for="grandFirstMark">First Mark</label>
+            <input type="number" id="grandFirstMark" name="first" required>
+            <label for="grandInMarkRange" class="markrange">Mark Range</label>
+            <input type="checkbox" id="grandInMarkRange" class="markrange" name="inrange" value="yes">
+            <div class="marks-container">
+                <input type="number" id="grandTotalMarks" name="total" placeholder="Total Marks" readonly>
+                <input type="number" id="grandTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
+            </div>
+            <button type="submit" id="addGrandButton" class="back-button1">Add</button>
+        </form>
+    </div>
+    
+    <script>
+        function updateGrandTotals() {
+            const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value) || 0;
+            const zoologyMarksSelect = parseInt(document.getElementById('grandZoologyMarksSelect').value) || 0;
+            const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value) || 0;
+            const physicsMarksSelect = parseInt(document.getElementById('grandPhysicsMarksSelect').value) || 0;
+            document.getElementById('grandTotalMarks').value =  zoologyMarks  + physicsMarks;
+            document.getElementById('grandTotalSelectedMarks').value = zoologyMarksSelect + physicsMarksSelect;
+        }
+
+        document.getElementById('grandZoologyMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandZoologyMarksSelect').addEventListener('change', updateGrandTotals);
+        document.getElementById('grandPhysicsMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandPhysicsMarksSelect').addEventListener('change', updateGrandTotals);
+    
+        document.getElementById('addGrandButton').addEventListener('click', () => {
+            const date = document.getElementById('grandDate').value;
+            const zoologyMarks = parseInt(document.getElementById('grandZoologyMarks').value);
+            const physicsMarks = parseInt(document.getElementById('grandPhysicsMarks').value);
+            const zoutoff = parseInt(document.getElementById('grandZoologyMarksSelect').value);
+            const poutoff = parseInt(document.getElementById('grandPhysicsMarksSelect').value);
+            
+            const firstMark = document.getElementById('grandFirstMark').value;
+            const inMarkRange = document.getElementById('grandInMarkRange').checked;
+
+            if(date  && zoologyMarks &&  physicsMarks) {
+                const totalMarks = zoologyMarks + physicsMarks;
+                const totalSelectedMarks = zoutoff + poutoff;
+                document.getElementById('grandTotalMarks').value = totalMarks;
+                document.getElementById('grandTotalSelectedMarks').value = totalSelectedMarks;
+            } 
+            else {
+                alert('Please fill in all fields.');
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('grandDate').value = today;
+        });
+    </script>
+</body>
+</html>
