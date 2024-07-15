@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumulative Test</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #142038;
+        }
+        
+        .form-container{
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container button {
+            width: 100%;
+            background-color: #142038;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #1D4FAE;
+        }
+
+        .form-container input[type="date"], .form-container select, .form-container input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-container select {
+            width: 100%;
+        }
+
+        .form-container input[type="number"].small {
+            width: 20%;
+        }
+
+        .form-container input.big {
+            width: 20%;
+            font-size: 200%;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            text-align: center;
+            color: #142038;
+            font-weight: 550;
+        }
+
+        .form-container .marks-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .markrange[type="checkbox"] {
+            transform: scale(1.5);
+        }
+
+        .markrange{
+            font-size: 140%;
+        }
+
+        .back-button1 {
+            width: 100% !important;
+            background-color: #4da802 !important;
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+
+        .back-button1:hover {
+            background-color: #357401 !important;
+        }
+    </style>
+</head>
+<body>    
+    <div class="form-container" id="grandFormContainer">
+        <h2>Cumulative Test</h2>
+        <form id="grandForm" action="https://script.google.com/macros/s/AKfycbzm90o10jnoi88V-Jb28wGzJ5z0hnmIaKmM80w9wn7P6x3V7k27-E0R3HtE6DfqnnSW/exec" method="POST">
+            <input type="date" id="grandDate" name="date" required>
+            <label for="grandChemistryMarks">Chemistry</label>
+            <input type="hidden" name="subject1" value="Chemistry">
+            <div class="marks-container">
+                <input type="number" id="grandChemistryMarks" name="marks1" required>
+                <input type="number" id="grandChemistryMarksSelect" name="outoff1" class="small" value="200" >
+            </div>
+            <label for="grandBotanyMarks">Botany</label>
+            <input type="hidden" name="subject2" value="Botany">
+            <div class="marks-container">
+                <input type="number" id="grandBotanyMarks" name="marks2" required>
+                <input type="number" id="grandBotanyMarksSelect" name="outoff2" class="small" value="200" >
+            </div>
+            <label for="grandFirstMark">First Mark</label>
+            <input type="number" id="grandFirstMark" name="first" required>
+            <label for="grandInMarkRange" class="markrange">Mark Range</label>
+            <input type="checkbox" id="grandInMarkRange" class="markrange" name="inrange" value="yes">
+            <div class="marks-container">
+                <input type="number" id="grandTotalMarks" name="total" placeholder="Total Marks" readonly>
+                <input type="number" id="grandTotalSelectedMarks" name="outoff" placeholder="Total Selected Marks" readonly>
+            </div>
+            <button type="submit" id="addGrandButton" class="back-button1">Add</button>
+        </form>
+    </div>
+    
+    <script>
+        function updateGrandTotals() {
+            const botanyMarks = parseInt(document.getElementById('grandBotanyMarks').value) || 0;
+            const botanyMarksSelect = parseInt(document.getElementById('grandBotanyMarksSelect').value) || 0;
+            const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value) || 0;
+            const chemistryMarksSelect = parseInt(document.getElementById('grandChemistryMarksSelect').value) || 0;
+            document.getElementById('grandTotalMarks').value = botanyMarks  + chemistryMarks;
+            document.getElementById('grandTotalSelectedMarks').value = botanyMarksSelect  + chemistryMarksSelect ;
+        }
+
+        document.getElementById('grandBotanyMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandBotanyMarksSelect').addEventListener('change', updateGrandTotals);
+        document.getElementById('grandChemistryMarks').addEventListener('input', updateGrandTotals);
+        document.getElementById('grandChemistryMarksSelect').addEventListener('change', updateGrandTotals);
+        
+        document.getElementById('addGrandButton').addEventListener('click', () => {
+            const date = document.getElementById('grandDate').value;
+            const botanyMarks = parseInt(document.getElementById('grandBotanyMarks').value);
+            const chemistryMarks = parseInt(document.getElementById('grandChemistryMarks').value);
+            const coutoff = parseInt(document.getElementById('grandChemistryMarksSelect').value);
+            const boutoff = parseInt(document.getElementById('grandBotanyMarksSelect').value);
+            const firstMark = document.getElementById('grandFirstMark').value;
+            const inMarkRange = document.getElementById('grandInMarkRange').checked;
+
+            if(date && botanyMarks  && chemistryMarks ) {
+                const totalMarks = botanyMarks + chemistryMarks;
+                const totalSelectedMarks = coutoff+boutoff;
+                document.getElementById('grandTotalMarks').value = totalMarks;
+                document.getElementById('grandTotalSelectedMarks').value = totalSelectedMarks;
+            } 
+            else {
+                alert('Please fill in all fields.');
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const today = yesterday.toISOString().split('T')[0];
+            document.getElementById('grandDate').value = today;
+        });
+    </script>
+</body>
+</html>

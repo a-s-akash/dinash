@@ -1,0 +1,90 @@
+    <style>
+        .response-container {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
+        }
+
+        .response-container h2 {
+            color: #4CAF50;
+            font-size: 300%;
+        }
+        
+        .response-container h3 {
+            color: red;
+            font-size: 300%;
+        }
+
+        .response-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            height: 70%;
+            font-size: 250%;
+        }
+
+        .response-container th,
+        .response-container td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .response-container th {
+            background-color: #f2f2f2;
+        }
+
+        .delete-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 120%;
+        }
+    </style>
+    <div class="response-container" id = "del" style="display: none;">
+        <h3>Mark Deleted Successfully</h3>
+    </div>
+    <div id="table">
+        <div class="response-container">
+            <h2>Mark Added Successfully</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <td>${date}</td>
+                </tr>
+                <tr>
+                    <th>${subjectU}</th>
+                    <td>${marks}/${selectedMarks}</td>
+                </tr>
+                <tr>
+                    <th>First Mark</th>
+                    <td>${firstMark}</td>
+                </tr>
+                <tr>
+                    <th>Range</th>
+                    <td>${inMarkRange}</td>
+                </tr>
+            </table>
+            <button id= "delbu" class="delete-button" onclick="deleteLastEntry()">Delete</button>
+        </div>
+    </div>
+    <script>
+        function deleteLastEntry() {
+              document.getElementById('del').style.display = 'block';
+              document.getElementById('table').style.display = 'block';
+              document.getElementById('delbu').style.display = 'none';
+        }
+    </script>

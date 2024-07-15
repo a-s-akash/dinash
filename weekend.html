@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Test</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #142038;
+        }
+        
+        .form-container{
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container button {
+            width: 100%;
+            background-color: #142038;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #1D4FAE;
+        }
+
+        .form-container input[type="number"].small {
+            width: 20%;
+        }
+
+        .form-container input[type="date"], .form-container select, .form-container input[type="number"] {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form-container select {
+            width: 100%;
+        }
+        .form-container input[type="number"].small {
+            width: 20%;
+        }
+        .form-container input.big {
+            width: 20%;
+            font-size: 200%;
+            background-color: #ccc;
+            border: 1px solid #ccc;
+            text-align: center;
+            color: #142038;
+            font-weight: 550;
+        }
+        .form-container .marks-container {
+            display: flex;
+            gap: 10px;
+        }
+        .markrange[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        .markrange{
+            font-size: 140%;
+        }
+        .back-button1 {
+            width: 100% !important;
+            background-color: #4da802 !important;
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+        }
+
+        .back-button1:hover {
+            background-color: #357401 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="weekendFormContainer">
+        <h2>Weekend Test</h2>
+        <form id="weekendForm" action="https://script.google.com/macros/s/AKfycbyI75Y2yELkDG_WihjP3HI5js9lDdwyg8TgkobHUwB3OTkzTpYbX5dlDK7Di4folZxX/exec" method="POST">
+            <input type="date" id="weekendDate" name="date" required>
+            <select id="weekendSubject" name="subject" required>
+                <option value="botany">Botany</option>
+                <option value="zoology">Zoology</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="physics">Physics</option>
+            </select>
+            <div class="marks-container">
+                <input type="number" id="weekendMarks" name="marks" required>
+                <input type="number" id="weekendMarkSelect" name="outoff" class="small" value="240">
+            </div>
+            <label for="weekendFirstMark">First Mark</label>
+            <input type="number" id="weekendFirstMark" name="first" required>
+            <label for="weekendInMarkRange" class="markrange">Mark Range </label>&nbsp;&nbsp;
+            <input type="checkbox" id="weekendInMarkRange" class="markrange" name="inrange" value="yes">
+            <button type="submit" id="addWeekendButton" class="back-button1">Add</button>
+        </form>
+    </div>
+
+    <script>
+        function chooseSubject(day) {
+            console.log(day);
+            if (day == "Wed"){
+                console.log("hi");
+                document.getElementById('weekendSubject').value = "physics";
+                document.getElementById('weekendMarkSelect').value = 120;
+            }
+            else if (day == "Thu"){
+                document.getElementById('weekendSubject').value = "chemistry";
+                document.getElementById('weekendMarkSelect').value = 180;
+            }
+            else if (day == "Fri"){
+                document.getElementById('weekendSubject').value = "botany";
+                document.getElementById('weekendMarkSelect').value = 240;
+            }
+            else if (day == "Sat"){
+                document.getElementById('weekendSubject').value = "zoology";
+                document.getElementById('weekendMarkSelect').value = 240;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('weekendSubject').value = 'botany';
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const today = yesterday.toISOString().split('T')[0];
+            document.getElementById('weekendDate').value = today;
+            chooseSubject(yesterday.toLocaleDateString('en-US', { weekday: 'short' }));
+        });
+        document.getElementById('weekendDate').addEventListener('change', () => {
+            const day = new Date(document.getElementById('weekendDate').value);
+            chooseSubject(day.toLocaleDateString('en-US', { weekday: 'short' }));
+        });
+        document.getElementById('weekendSubject').addEventListener('change', () => {
+            const subject = document.getElementById('weekendSubject').value;
+            if (subject === "botany"){document.getElementById('weekendMarkSelect').value = 240;}
+            else if (subject === "zoology"){document.getElementById('weekendMarkSelect').value = 240;}
+            else if (subject === "chemistry"){document.getElementById('weekendMarkSelect').value = 180;}
+            else if (subject === "physics"){document.getElementById('weekendMarkSelect').value = 120;}
+        });
+        document.getElementById('addWeekendButton').addEventListener('click', () => {
+            const date = document.getElementById('weekendDate').value;
+            const subject = document.getElementById('weekendSubject').value;
+            const marks = parseInt(document.getElementById('weekendMarks').value);
+            const selectedMarks = parseInt(document.getElementById('weekendMarkSelect').value);
+            const firstMark = document.getElementById('weekendFirstMark').value;
+            const inMarkRange = document.getElementById('weekendInMarkRange').checked;
+
+            if(date && subject && marks && selectedMarks) {
+                const totalMarks = marks;
+                const totalSelectedMarks = selectedMarks;
+                document.getElementById('weekendTotalMarks').value = totalMarks;
+                document.getElementById('weekendTotalSelectedMarks').value = totalSelectedMarks;
+            } 
+            else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
