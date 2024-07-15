@@ -122,12 +122,38 @@
     </div>
 
     <script>
+        function chooseSubject(day) {
+            console.log(day);
+            if (day == "Wed"){
+                console.log("hi");
+                document.getElementById('weekendSubject').value = "physics";
+                document.getElementById('weekendMarkSelect').value = 120;
+            }
+            else if (day == "Thu"){
+                document.getElementById('weekendSubject').value = "chemistry";
+                document.getElementById('weekendMarkSelect').value = 180;
+            }
+            else if (day == "Fri"){
+                document.getElementById('weekendSubject').value = "botany";
+                document.getElementById('weekendMarkSelect').value = 240;
+            }
+            else if (day == "Sat"){
+                document.getElementById('weekendSubject').value = "zoology";
+                document.getElementById('weekendMarkSelect').value = 240;
+            }
+        }
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('weekendSubject').value = 'botany';
-            const yesterday = new Date();             yesterday.setDate(yesterday.getDate() - 1);             const today = yesterday.toISOString().split('T')[0];
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const today = yesterday.toISOString().split('T')[0];
             document.getElementById('weekendDate').value = today;
+            chooseSubject(yesterday.toLocaleDateString('en-US', { weekday: 'short' }));
         });
-        
+        document.getElementById('weekendDate').addEventListener('change', () => {
+            const day = new Date(document.getElementById('weekendDate').value);
+            chooseSubject(day.toLocaleDateString('en-US', { weekday: 'short' }));
+        });
         document.getElementById('weekendSubject').addEventListener('change', () => {
             const subject = document.getElementById('weekendSubject').value;
             if (subject === "botany"){document.getElementById('weekendMarkSelect').value = 240;}
